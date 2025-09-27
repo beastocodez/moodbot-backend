@@ -15,7 +15,7 @@ export default async function handler(req, res) {
   }
 
   try {
-    const response = await fetch("https://openrouter.ai/api/v1/chat/completions", {
+    const response = await fetch("https://api.longcat.chat/openai/", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -30,3 +30,4 @@ export default async function handler(req, res) {
     res.status(500).json({ error: "Server error", details: error.message });
   }
 }
+
