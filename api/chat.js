@@ -19,7 +19,9 @@ export default async function handler(req, res) {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        "Authorization": `Bearer ${process.env.OPENROUTER_API_KEY}`
+        "Authorization": `Bearer ${process.env.OPENROUTER_API_KEY}`,
+        "HTTP-Referer": "https://beastocodez.github.io/MoodBot-ai/", 
+        "X-Title": "MoodBot AI"
       },
       body: JSON.stringify(req.body),
     });
