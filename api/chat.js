@@ -1,7 +1,6 @@
-// api/chat.js
 export default async function handler(req, res) {
   // Add CORS headers
-  res.setHeader("Access-Control-Allow-Origin", "*"); // or restrict to your frontend domain
+  res.setHeader("Access-Control-Allow-Origin", "*");
   res.setHeader("Access-Control-Allow-Methods", "POST, OPTIONS");
   res.setHeader("Access-Control-Allow-Headers", "Content-Type");
 
@@ -15,13 +14,13 @@ export default async function handler(req, res) {
   }
 
   try {
-    const response = await fetch("https://openrouter.ai/api/v1/chat/completions", {
+    // 1. Pointed to Groq's endpoint
+    const response = await fetch("https://api.groq.com/openai/v1/chat/completions", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        "Authorization": `Bearer ${process.env.OPENROUTER_API_KEY}`,
-        "HTTP-Referer": "https://beastocodez.github.io/MoodBot-ai/", 
-        "X-Title": "MoodBot AI"
+        // 2. Updated to use the Groq environment variable
+        "Authorization": `Bearer ${process.env.GROQ_API_KEY}` 
       },
       body: JSON.stringify(req.body),
     });
@@ -32,5 +31,3 @@ export default async function handler(req, res) {
     res.status(500).json({ error: "Server error", details: error.message });
   }
 }
-
-
