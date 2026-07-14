@@ -15,12 +15,12 @@ export default async function handler(req, res) {
 
   try {
     // 1. Pointed to Groq's endpoint
-    const response = await fetch("https://api.groq.com/openai/v1/chat/completions", {
+    const response = await fetch("https://openrouter.ai/api/v1/chat/completions", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
         // 2. Updated to use the Groq environment variable
-        "Authorization": `Bearer ${process.env.GROQ_API_KEY}` 
+        "Authorization": `Bearer ${process.env.OPENROUTER_API_KEY}` 
       },
       body: JSON.stringify(req.body),
     });
