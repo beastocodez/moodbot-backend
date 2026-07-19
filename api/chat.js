@@ -19,7 +19,7 @@ export default async function handler(req, res) {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        // 2. Updated to use the Groq environment variable
+        // 2. Updated to use the OpenRouter environment variable
         "Authorization": `Bearer ${process.env.OPENROUTER_API_KEY}` 
       },
       body: JSON.stringify(req.body),
